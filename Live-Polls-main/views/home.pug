@@ -1,0 +1,75 @@
+doctype
+html(lang="en")
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title Live Polling
+        link(rel='stylesheet' href='/css/style.css')
+        link(rel='preconnect' href='https://fonts.gstatic.com')
+        link(href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap' rel='stylesheet')
+        include favicon
+        include social
+    body
+        .cover
+            .cover__box
+                .line
+                .cover__box-main
+                    p.lines The link to your poll is
+                    input#poll_link.links(value=`https://rapid-poll.vercel.app/poll/6rZNg6bRt230a5z3AJ69`)
+                    p.lines The admin link to manage your poll and to see live update is
+                    p.warning Don&apos;t share this link with your participants
+                    .hide#admin
+                        input#admin_link.links(value=`https://rapid-poll.vercel.app/poll/6rZNg6bRt230a5z3AJ69`)
+                .cover__box-foot
+                    a#poll_anchor(href='#' target='__blank') Visit your poll
+                    a#admin_anchor(href='#') Visit admin page
+
+        .line
+        header
+            .hero
+                .hero__headings
+                    h1 Create Live Polls
+                    h3(style='text-align: center;') Get real time updates on your polls
+        main
+            .poll
+                h2 Create a Poll
+                .poll__info
+                    h3 Fill the fields given below
+                    a.demo__poll(href='/poll/3f2pstlcuslcw0x3wl' target="__blank") View a demo poll
+            form.poll(action='#')
+                label.poll__label(for='question') Poll Question
+                textarea#name.poll__name(placeholder="What's your favorite anime ?" name='question' required)
+                .poll__box
+                    .poll__options
+                        #opt-container-1.poll__option-container
+                            label.poll__label(for='option-1') Option 1
+                            .poll__option-box
+                                input#option-1.poll__option(type='text' name='option-1' placeholder='Option 1' required)
+                                //
+                                    <svg class="poll__option-removeIcon" data-option="opt-container-1">
+                                    <use xlink:href="/svg/sprite.svg#icon-circle-with-cross"></use>
+                                    </svg>
+                        #opt-container-2.poll__option-container
+                            label.poll__label(for='option-2') Option 2
+                            .poll__option-box
+                                input#option-2.poll__option(type='text' placeholder='Option 2' required)
+                                //
+                                    <div class="poll__option-remove">
+                                    <svg class="poll__option-removeIcon" data-option="option-2">
+                                    <use xlink:href="/svg/sprite.svg#icon-circle-with-cross"></use>
+                                    </svg>
+                                    </div>
+                    .poll__btns
+                        button#add.poll__btn + Add another option
+                        hr(style='margin-bottom: 3rem;')
+                        button#submit.poll__btn Create my poll
+            h3(style='text-align: center;margin-top: 8rem;')
+                //- | A project by Raj Pandey
+                br
+                | Inspired by 
+                a(href='https://rapid-poll.vercel.app/' style='color: #3489db;' target='__blank')
+                    | Rapid
+                    | poll
+        script(src='/jquery/dist/jquery.min.js')
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="/js/bundle.js")
